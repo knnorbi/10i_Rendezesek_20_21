@@ -30,9 +30,25 @@ namespace _10i_Rendezesek_20_21
             }
         }
 
+        static void BuborekRendzes(int[] t)
+        {
+            for (int i = t.Length - 1; i > 0; i--)
+            {
+                for (int j = 0; j < i; j++)
+                {
+                    if (t[j] > t[j + 1])
+                    {
+                        int seged = t[j + 1];
+                        t[j + 1] = t[j];
+                        t[j] = seged;
+                    }
+                }
+            }
+        }
+
         static void Main(string[] args)
         {
-            int[] tomb = new int[3];
+            int[] tomb = new int[20];
             Random random = new Random();
             for (int i = 0; i < tomb.Length; i++)
             {
@@ -44,7 +60,7 @@ namespace _10i_Rendezesek_20_21
                 Console.WriteLine(tomb[i]);
             }
 
-            MinimumkivalasztasosRendezes(tomb);
+            BuborekRendzes(tomb);
 
             Console.WriteLine("A rendezett tomb:");
             for (int i = 0; i < tomb.Length; i++)
